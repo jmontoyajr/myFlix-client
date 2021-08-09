@@ -1,9 +1,9 @@
 import React from 'react';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import imageOne from './src/img/inception.png';
-import imageTwo from './src/img/shawshank.png';
-import imageThree from './src/img/gladiator.png';
+import imageOne from '../../img/inception.png';
+import imageTwo from '../../img/shawshank.png';
+import imageThree from '../../img/gladiator.png';
 
 class MainView extends React.Component {
 
