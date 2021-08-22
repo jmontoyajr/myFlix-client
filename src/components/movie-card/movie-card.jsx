@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { boolean } from 'webidl-conversions';
 
 export class MovieCard extends React.Component {
   render() {

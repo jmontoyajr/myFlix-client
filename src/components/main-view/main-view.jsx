@@ -37,7 +37,7 @@ export class MainView extends React.Component {
       selectedMovie: movie
     });
   }
-  // when a user logs in, updates to user property in state that particular user
+  // when a useviewr logs in, updates to user property in state that particular user
   onLoggedIn(user) {
     this.setState({
       user
@@ -45,7 +45,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie, user } = this.state;
 
     // if no user, logged in view rendered - if logged in, user details passed as a prop to logged in view
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;

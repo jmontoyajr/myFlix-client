@@ -4,7 +4,7 @@ export function RegistrationView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password);
     // send request to server for authentication
@@ -13,7 +13,7 @@ export function RegistrationView(props) {
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>
         Username:
         <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
@@ -21,7 +21,7 @@ export function RegistrationView(props) {
       <label>
         Password:
         <input type="text" value={password} onChange={e => setPassword(e.target.value)} />
-        <button type="submit" onClick={handleSubmit}>
+        <button type="submit">
           Submit
         </button>
       </label>
