@@ -12,7 +12,7 @@ export class MovieCard extends React.Component {
       <Card>
         <Card.Img variant="top" src={movie.ImagePath} />
         <Card.Body>
-          <Card.Header as="h3" style={{ color: 'green' }}>Featuring</Card.Header>
+          <Card.Header as="h3" style={{ color: 'green' }}>{movie.Genre.Name}</Card.Header>
           <hr />
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
