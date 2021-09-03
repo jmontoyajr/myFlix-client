@@ -5,7 +5,11 @@
   "description": "myFlix-Client application",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:watch": "parcel src/index.html"
+    "dev:watch": "parcel src/index.html --dist-dir docs",
+    "clean": "rm -rf docs && rm -rf .parcel-cache",
+    "prod:build": "npm run clean && parcel build src/index.html --dist-dir docs",
+    "parcel": "parcel"
+
   },
   "author": "Jorge Montoya Jr",
   "license": "ISC",
