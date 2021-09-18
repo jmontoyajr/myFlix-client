@@ -7,5 +7,4 @@
 
 ### Deploy Steps
 - create `CNAME` file containing name of domain. (`mydomain.surge.sh` for example)
-- `npm run prod:build`
 - `npm run deploy`

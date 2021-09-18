@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 
 
-export class MovieView extends React.Component {
+export class GenreView extends React.Component {
 
   keypressCallback(event) {
     console.log(event.key);
@@ -40,25 +40,6 @@ export class MovieView extends React.Component {
           <span className="value">{movie.Genre.Name}{''}</span>
         </div>
         <hr />
-        <div className="movie-director">
-          <span className="label"><strong>Director: {''}</strong></span>
-          <span className="value">{movie.Director.Name}{''}</span>
-        </div>
-        <hr />
-        <div className="director-bio">
-          <span className="label"><strong>Bio: {''}</strong></span>
-          <span className="value">{movie.Director.Bio}{''}</span>
-        </div>
-        <hr />
-        <div className="director-birth">
-          <span className="label"><strong>Birth: {''}</strong></span>
-          <span className="value">{movie.Director.Birth}{''}</span>
-        </div>
-        <hr />
-        <Link to={`/directors/${movie.Director.Name}`}>
-          <Button variant="link">Director</Button>
-        </Link>
-
         <Link to={`/genres/${movie.Genre.Name}`}>
           <Button variant="link">Genre</Button>
         </Link>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export function RegistrationView(props) {
+export function ProfileView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -9,7 +9,7 @@ export function RegistrationView(props) {
     e.preventDefault();
     console.log(username, password);
     // send request to server for authentication
-    axios.post('https://j-flix-app.herokuapp.com/users', {
+    axios.put('https://j-flix-app.herokuapp.com/users', {
       Username: username,
       Password: password,
       Email: email,
