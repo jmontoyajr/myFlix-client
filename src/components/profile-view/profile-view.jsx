@@ -12,8 +12,10 @@ export function ProfileView(props) {
     axios.put('https://j-flix-app.herokuapp.com/users', {
       Username: username,
       Password: password,
-      Email: email,
-      Birthday: birthday
+    })
+    /* Get authorization token */
+    axios.get('https://j-flix-app.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
         const data = response.data;
