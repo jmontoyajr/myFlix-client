@@ -1,44 +1,35 @@
 import React from 'react';
 import axios from 'axios';
 
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { MovieCard } from '../movie-card/movie-card';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+// #0 
+import { setMovies } from '../../actions/actions';
+
+import MovieList from '../movies-list/movies-list';
+
+// import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
-import { ProfileView } from '../profile-view/profile-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
+import { ProfileView } from '../profile-view/profile-view';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-export class MainView extends React.Component {
+// #2 export keyword removed from here
+class MainView extends React.Component {
 
   constructor() {
     super();
-    // Initial state is set to null
+    // #3 movies state removed from here
     this.state = {
-      movies: [],
       user: null
     };
-  }
-
-  // Adds authorization token to app header
-  getMovies(token) {
-    axios.get('https://j-flix-app.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(response => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   // link to j-flix-app on Heroku
@@ -50,6 +41,20 @@ export class MainView extends React.Component {
       });
       this.getMovies(accessToken);
     }
+  }
+
+  // Adds authorization token to app header
+  getMovies(token) {
+    axios.get('https://j-flix-app.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        // #4 Assign the result to the state
+        this.props.setMovies(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   // when a useviewr logs in, updates to user property in state that particular user
@@ -80,8 +85,10 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.state;
 
+    // #5 movies is extracted from this.props rather than from the this.state
+    let { movies } = this.props;
+    let { user } = this.state;
     // if no user, logged in view rendered - if logged in, user details passed as a prop to logged in view
 
     // Before the movies have been loaded
@@ -95,11 +102,7 @@ export class MainView extends React.Component {
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (movies.length === 0) return <div className="main-view" />;
-            return movies.map(m => (
-              <Col md={3} key={m._id}>
-                <MovieCard movie={m} />
-              </Col>
-            ))
+            return <MoviesList movies={movies} />;
           }} />
           <Route path="/register" render={() => {
             if (user) return <Redirect to="/" />
@@ -144,4 +147,10 @@ export class MainView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+export default connect(mapStateToProps, { setMovies })(MainView);
 
