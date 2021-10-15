@@ -21,7 +21,7 @@ export class DirectorView extends React.Component {
     const { movie, onBackClick } = this.props;
 
     return (
-      <div className="movie-view">
+      <div className="director-view">
         <div className="movie-poster">
           <img src={movie.ImagePath} />
           <hr />

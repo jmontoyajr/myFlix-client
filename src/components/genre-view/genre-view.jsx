@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 
 export class GenreView extends React.Component {
@@ -20,7 +21,7 @@ export class GenreView extends React.Component {
     const { movie, onBackClick } = this.props;
 
     return (
-      <div className="movie-view">
+      <div className="genre-view">
         <div className="movie-poster">
           <img src={movie.ImagePath} />
           <hr />

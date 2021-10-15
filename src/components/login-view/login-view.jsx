@@ -14,10 +14,6 @@ export function LoginView(props) {
       Username: username,
       Password: password
     })
-    /* Get authorization token */
-    axios.get('https://j-flix-app.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
       .then(response => {
         const data = response.data;
         props.onLoggedIn(data);
