@@ -21,3 +21,4 @@
 
 ### Which API the project uses
 - The project uses the Movie API created in the previous section of the project. Code can be found here: https://github.com/jmontoyajr/movie-api
+
