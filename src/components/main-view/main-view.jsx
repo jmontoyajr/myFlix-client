@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import logo from '../../img/my-flix.png';
 
 import { connect } from 'react-redux';
 
@@ -93,9 +95,14 @@ class MainView extends React.Component {
 
     // Before the movies have been loaded
 
-
     return (
       <Router>
+        <hr />
+        <div>
+          <img src={logo} width={250} />
+          <Button variant="warning" size="lg" style={{ float: 'right' }} onClick={() => { this.onLoggedOut() }}>Logout</Button>
+        </div>
+
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
             if (!user) return <Col>

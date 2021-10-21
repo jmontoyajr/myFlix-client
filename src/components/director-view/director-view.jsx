@@ -47,7 +47,7 @@ export class DirectorView extends React.Component {
         </div>
         <hr />
         <Link to={`/directors/${movie.Director.Name}`}>
-          <Button variant="link">Director</Button>
+          <Button variant="warning">Director</Button>
         </Link>
         <hr />
         <div>
