@@ -1,8 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { DirectorView } from '../director-view/director-view';
-import { GenreView } from '../genre-view/genre-view';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 export class MovieView extends React.Component {
 
@@ -37,46 +35,22 @@ export class MovieView extends React.Component {
           <span className="value">{movie.Description}{''}</span>
         </div>
         <hr />
-        <div className="movie-genre">
-          <span className="label"><strong>Genre: {''}</strong></span>
-          <span className="value">{movie.Genre.Name}{''}</span>
+        <div>
+          <Link to={`/directors/${movie.Director.Name}`}>Director</Link>
         </div>
         <hr />
-        <div className="movie-director">
-          <span className="label"><strong>Director: {''}</strong></span>
-          <span className="value">{movie.Director.Name}{''}</span>
+        <div>
+          <Link to={`/genre/${movie.Genre.Name}`}>Genre</Link>
         </div>
         <hr />
-        <div className="director-bio">
-          <span className="label"><strong>Bio: {''}</strong></span>
-          <span className="value">{movie.Director.Bio}{''}</span>
-        </div>
-        <hr />
-        <div className="director-birth">
-          <span className="label"><strong>Birth: {''}</strong></span>
-          <span className="value">{movie.Director.Birth}{''}</span>
-        </div>
-        <hr />
-        <Router>
-          <div>
-            <Link to={`/directors/${movie.Director.Name}`}>
-              <Button variant="warning">Director</Button>
-            </Link>
-            <Route exact path="directors" component={DirectorView} />
-          </div>
-          <hr />
-          <div>
-            <Link to={`/genres/${movie.Genre.Name}`}>
-              <Button variant="warning">Genre</Button>
-            </Link>
-            <Route exact path="genres" component={GenreView} />
-          </div>
-        </Router>
-        <hr />
+
         <div>
           <Button onClick={() => { onBackClick(null); }} variant="success">Back</Button>
         </div>
       </div>
+
     );
   }
 }
+
+

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -25,6 +27,7 @@ export function LoginView(props) {
 
   return (
     <div>
+      <h1>Login</h1>
       <Form>
         <Form.Group controlId="formUserName">
           <Form.Label>Username:</Form.Label>
@@ -38,7 +41,11 @@ export function LoginView(props) {
         <Button variant="success" type="submit" onClick={handleSubmit}>
           Submit
         </Button>
+        <hr>
+        </hr>
       </Form>
-    </div>
+      <Link to={`/register`}><h2>Sign Up!</h2></Link>
+
+    </div >
   );
 }
