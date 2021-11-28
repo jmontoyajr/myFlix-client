@@ -30,7 +30,8 @@ class MainView extends React.Component {
     super();
     // #3 movies state removed from here
     this.state = {
-      user: null
+      user: null,
+      favoriteMovies: []
     };
   }
 
@@ -43,6 +44,17 @@ class MainView extends React.Component {
       });
       this.getMovies(accessToken);
     }
+  }
+
+  addFavorite(id) {
+    const favorites = this.state.favoriteMovies
+    favorites.push(id)
+
+    console.log(favorites, "favorites")
+
+    this.setState({
+      favoriteMovies: favorites
+    })
   }
 
   // Adds authorization token to app header
@@ -139,7 +151,7 @@ class MainView extends React.Component {
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             return <Col md={8}>
-              <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
+              <MovieView addFavorite={this.addFavorite} movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
           <Route path="/directors/:name" render={({ match, history }) => {

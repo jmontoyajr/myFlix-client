@@ -17,7 +17,10 @@ export class MovieView extends React.Component {
   }
 
   render() {
-    const { movie, onBackClick } = this.props;
+    const { movie, onBackClick, addFavorite } = this.props;
+
+    console.log(movie, "movie")
+    console.log(addFavorite)
 
     return (
       <div className="movie-view">
@@ -46,6 +49,9 @@ export class MovieView extends React.Component {
 
         <div>
           <Button onClick={() => { onBackClick(null); }} variant="success">Back</Button>
+        </div>
+        <div>
+          <Button onClick={() => { addFavorite(movie._id); }} variant="warning">Favorite</Button>
         </div>
       </div>
 
